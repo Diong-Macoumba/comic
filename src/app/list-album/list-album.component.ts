@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ComicService} from '../comic.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Comic} from '../modele/Comic';
 import {AlbumService} from '../album.service';
 import {Album} from '../modele/Album';
@@ -12,8 +12,11 @@ import {Album} from '../modele/Album';
 })
 export class ListAlbumComponent implements OnInit {
 
-  constructor(private albumService: AlbumService, private router:Router) { }
+  idAlbum: number;
 
+  constructor(private albumService: AlbumService, private router:Router, private  activedRoute: ActivatedRoute) {
+    this.idAlbum = this.activedRoute.snapshot.params.id;
+  }
   albums: any;
   mc:string = "";
   page:number = 0;
@@ -36,8 +39,17 @@ export class ListAlbumComponent implements OnInit {
     );
   }
 
-  chercherAlbums(): void {
-    this.listAlbums();
+  getAlbumByid(idAlbum: number){
+    this.router.navigate(['albumDetail', idAlbum]);
+    this.albumService.getAlbum(this.idAlbum).subscribe(
+      response => {
+        this.albums = response;
+        console.log(response);
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
   nextPage(i: number) {
@@ -45,13 +57,13 @@ export class ListAlbumComponent implements OnInit {
     this.listAlbums();
   }
 
-  editAlbum(idAlbum: number) {
-    this.router.navigate(['editAlbum', idAlbum]);
+  detailAlbum(idAlbum: number) {
+    this.router.navigate(['albumDetail', idAlbum]);
   }
 
   supprimerAlbum(a: Album) {
-    let confirmation = window.confirm("Etes vous sure de vouloir supprimer !");
-    if( confirmation = true) {
+    let confirmation = confirm("Etes vous sure de vouloir supprimer !");
+    if( confirmation) {
       this.albumService.deleteAlbum(a.idAlbum).subscribe(
         response => {
           this.albums.content.splice(

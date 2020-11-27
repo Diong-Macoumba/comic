@@ -11,17 +11,17 @@
           </div>
         </div>
         <div class="panel-body">
-          <button class="btn btn-primary" (click)="listAlbums()">ListAlbums</button>
-          <button class="btn btn-primary" routerLink="/albums">Creer Album</button>
+          <button class="btn btn-success" (click)="listAlbums()">ListAlbums</button>
+          <button class="btn btn-success" routerLink="/albums">Creer Album</button>
         </div>
         <div class="panel-body column">
-          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" [(ngModel)]="mc" data-filters="#dev-table" placeholder="filtrer un album" />
-          <button class="btn btn-primary" (click)="chercherAlbums()">Chercher</button>
+          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" [(ngModel)]="idAlbum" data-filters="#dev-table" placeholder="filtrer un album par id" />
+          <button class="btn btn-success" (click)="getAlbumByid(idAlbum)">Chercher</button>
         </div>
         <table class="table table-hover" id="dev-table" *ngIf="albums">
           <thead>
           <tr>
-            <td>Identifiant</td><td>Titre</td><td>Numero</td><td>Date de publication</td><td>CoverName</td>
+            <td>Id</td><td>Titre</td><td>Num</td><td>Date de publication</td><td>CoverName</td>
           </tr>
           </thead>
           <tbody>
@@ -31,7 +31,7 @@
             <td>{{a.number}}</td>
             <td>{{a.publicationDate}}</td>
             <td>{{a.coverName}}</td>
-            <td><a class="badge badge-warning" (click)="editAlbum(a.idAlbum)" >Editer</a></td>
+            <td><a class="badge badge-success" (click)="detailAlbum(a.idAlbum)">View</a></td>
             <td><a class="badge badge-danger" (click)="supprimerAlbum(a)">Supprimer</a></td>
           </tr>
           </tbody>

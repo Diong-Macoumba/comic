@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="">
+    <div class="col-md-6" style="flex: none; max-width: none;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title lab">Album detail</h3>
+          <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="lab">
+            <label class="label">Identifiant : </label><label><strong>{{album.idAlbum}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Titre : </label><label><strong>{{album.title}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Numero : </label><label><strong>{{album.numero}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Date de Publication : </label><label><strong>{{album.publicationDate}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">CoverName : </label><label><strong>{{album.coverName}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Comic ID : </label><label><strong>{{album.comic.idComic}}</strong></label>
+          </div>
+          <div>
+            <div>
+              <button routerLink="/listAlbums" class="btn btn-success">List albums</button>
+              <button routerLink="/albums" class="btn btn-success">Creer album</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

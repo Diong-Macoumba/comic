@@ -1,38 +1,56 @@
-<div class="list row">
-  <div class="col-md-8">
-    <div class="input-group mb-4">
-      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="title"/>
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="findByTitle()">Chercher</button>
+<div class="container">
+      <div class="">
+        <div class="col-md-6" style="flex: none; max-width: none;">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h3 class="panel-title">Comics</h3>
+                 <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+            </div>
+          </div>
+            <div class="panel-body">
+              <button class="btn btn-success" (click)="listComics()">ListComics</button>
+              <button class="btn btn-success" routerLink="/comics">Creer Comic</button>
+            </div>
+            <div class="panel-body column">
+                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" [(ngModel)]="mc" data-filters="#dev-table" placeholder="filtrer par titre" />
+                <button class="btn btn-success" (click)="chercherComic()">Chercher</button>
+              <input type="text" class="form-control" style="max-width: 120px;" data-action="filter" [(ngModel)]="idRoute" data-filters="#dev-table" placeholder="filtrer par id" />
+              <button class="btn btn-success" (click)="getComicByid(idRoute)">Chercher</button>
+             <div>
+             </div>
+            </div>
+            <table class="table table-hover" id="dev-table" *ngIf="comics">
+              <thead>
+                <tr>
+                  <td><strong>Id</strong></td><td><strong>Titre</strong></td><td><strong>ScriptWriter</strong></td><td><strong>Illustrator</strong></td><td><strong>Publisher</strong></td><td><strong>Favorite</strong></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of comics.content">
+                  <td>{{c.idComic}}</td>
+                  <td>{{c.title}}</td>
+                  <td>{{c.scriptWriter}}</td>
+                  <td>{{c.illustrator}}</td>
+                  <td>{{c.publisher}}</td>
+                  <td><input type="checkbox" class="form-control" name="favorite" /></td>
+                  <td><a class="badge badge-success" (click)="detailComic(c.idComic)">View</a></td>
+                  <td><a class="badge badge-success" (click)="editComic(c.idComic)" >Editer</a></td>
+                  <td><a class="badge badge-danger" (click)="supprimerComic(c)"><i class="far fa-trash-alt"></i>Supprimer</a></td>
+               </tr>
+            </tbody>
+         </table>
+          <div class="container">
+            <ul class="nav nav-pills">
+              <li *ngFor="let p of pagesTotal; let i=index">
+                <a [ngClass]="{'active':i==page}" (click)="nextPage(i)">{{i}}</a>
+              </li>
+            </ul>
+          </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Liste Comics</h4>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let comic of comics; let i = index" [class.active]="i == currentComic" (click)="setCurrentComic(comic, i)"></li>
-    </ul>
-    <button class="m-4 btn btn-sm btn-danger" (click)="deleteAllComic()">Tout supprimer</button>
-  </div>
-  <div class="col-md-6">
-    <div *ngIf="currentComic">
-      <h4>Comic</h4>
-      <div>
-        <label><strong>Titre:</strong></label>
-      </div>
-      <div>
-        <label><strong>Description:</strong></label>
-
-      </div>
-      <div>
-        <label><strong>Status:</strong></label>
-
-      </div>
-      <a class="badge badge-warning" routerLink="/products/">Edit</a>
-    </div>
-
-    <div *ngIf="!currentComic"><br />
-      <p>Please click on a product</p>
     </div>
   </div>
 </div>
+

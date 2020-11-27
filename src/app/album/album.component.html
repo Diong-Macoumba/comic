@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="album.title" required name="title" #title="ngModel" />
+      </div>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        le titre est obligatoire
+      </div>
+
+      <div class="form-group">
+        <label for="number">Numero</label>
+        <input type="text" class="form-control" id="number" [(ngModel)]="album.numero" required name="number" />
+      </div>
+
+      <div class="form-group">
+        <label for="publicationDate">Date de publication</label>
+        <input type="date" class="form-control" id="publicationDate" [(ngModel)]="album.publicationDate"  name="publicationDate" />
+      </div>
+
+      <div class="form-group">
+        <label for="coverName">CoverName</label>
+        <input type="text" class="form-control" id="coverName" [(ngModel)]="album.coverName" required name="coverName" #coverName="ngModel" />
+      </div>
+      <div *ngIf="coverName.invalid && (coverName.dirty || coverName.touched)" class="alert alert-danger">
+        le coverName est obligatoire
+      </div>
+
+      <div class="form-group">
+        <label for="comic">Comic Id</label>
+        <input type="text" class="form-control" id="comic" [(ngModel)]="album.comic.idComic" required name="comic" />
+      </div>
+      <button  (click)="createAlbum()" class="btn btn-success">Créer</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>votre album est enrégistré</h3>
+      <button class="btn btn-success" routerLink="/albums" (click)="newAlbums()">Nouveau</button>
+    </div>
+  </div>
+</div>
+

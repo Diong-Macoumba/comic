@@ -21,7 +21,7 @@ a:hover{
   background: #d1dce8;
 }
 .active{
-  background: blue;
+  background: green;
   color: white;
 }
 .btn {

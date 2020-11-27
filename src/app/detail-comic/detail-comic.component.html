@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="">
+    <div class="col-md-6" style="flex: none; max-width: none;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title lab">Comic detail</h3>
+          <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="lab">
+            <label class="label">Identifiant : </label><label><strong>{{comic.idComic}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Titre : </label><label><strong>{{comic.title}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">ScriptWriter : </label><label><strong>{{comic.scriptWriter}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Illustrator : </label><label><strong>{{comic.illustrator}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Publisher : </label><label><strong>{{comic.publisher}}</strong></label>
+          </div>
+          <div class="lab">
+            <label class="label">Favorite : </label><label><strong>{{comic.favorite}}</strong></label>
+          </div>
+          <div>
+          <div>
+            <button routerLink="/listComics" class="btn btn-success">List comics</button>
+            <button routerLink="/comics" class="btn btn-success">Creer comic</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

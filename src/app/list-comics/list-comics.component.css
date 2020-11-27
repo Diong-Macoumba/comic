@@ -1,0 +1,43 @@
+.container {
+  margin: auto;
+}
+button {
+  margin-bottom: 30px;
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+.column {
+  display: flex;
+  align-content: space-between;
+}
+a {
+  padding: 10px 22px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+a:hover{
+  border: 0.1px solid #d1dce8;
+  background: #d1dce8;
+}
+.active{
+  background: green;
+  color: white;
+}
+.btn {
+  margin-left: 10px;
+}
+select {
+  height: 38px;
+  width: 120px;
+}
+.table td, .table th {
+  border-top: 1px solid #abee18;
+  border-bottom: 1px solid #abee18;
+}
+
+td {
+  padding-left: 0px;
+  padding-right: 0px;
+}

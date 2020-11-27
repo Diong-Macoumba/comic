@@ -11,10 +11,10 @@ import {Comic} from '../modele/Comic';
 export class EditComicComponent implements OnInit {
 
   currentComic:Comic = new Comic();
-  idComic: any;
+  idComic: number;
 
   constructor(private comicService: ComicService, private route: ActivatedRoute, private router: Router) {
-    this.idComic = route.snapshot.params['idComic'];
+    this.idComic = route.snapshot.params.id;
   }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class EditComicComponent implements OnInit {
   }
 
   updateComic() {
-    this.comicService.updateComic(this.currentComic, this.idComic).subscribe(
+    this.comicService.updateComic(this.idComic,this.currentComic).subscribe(
       response => {
         console.log(response);
         alert("mise à jour effectuée");

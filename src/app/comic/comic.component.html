@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="comic.title" required name="title" #title="ngModel" />
+      </div>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        le titre est obligatoire
+      </div>
+
+      <div class="form-group">
+        <label for="scriptWriter">ScriptWriter</label>
+        <input type="text" class="form-control" id="scriptWriter" [(ngModel)]="comic.scriptWriter" required name="scriptWriter" #scriptWriter="ngModel" />
+      </div>
+      <div *ngIf="scriptWriter.invalid && (scriptWriter.dirty || scriptWriter.touched)" class="alert alert-danger">
+        le scriptWriter est obligatoire
+      </div>
+
+      <div class="form-group">
+        <label for="illustrator">Illustrator</label>
+        <input type="tel" class="form-control" id="illustrator" [(ngModel)]="comic.illustrator" required name="illustrator" #illustrator="ngModel" />
+      </div>
+      <div *ngIf="illustrator.invalid && (illustrator.dirty || illustrator.touched)" class="alert alert-danger">
+        l'illustrator est obligatoire
+      </div>
+
+      <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <input type="text" class="form-control" id="publisher" [(ngModel)]="comic.publisher" required name="publisher" #publisher="ngModel" />
+      </div>
+      <div *ngIf="publisher.invalid && (publisher.dirty || publisher.touched)" class="alert alert-danger">
+        le publisher est obligatoire
+      </div>
+
+      <div class="form-group form-checkbox">
+        <label for="favorite">Favorite</label>
+        <input class="checkbox" type="checkbox" class="form-control" id="favorite" [(ngModel)]="comic.favorite" name="favorite" />
+      </div>
+
+
+      <button  (click)="createComic()" class="btn btn-success">Créer</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>votre comic est enrégistré</h3>
+      <button class="btn btn-success" routerLink="/comics" (click)="newComic()">Nouveau</button>
+    </div>
+  </div>
+</div>
