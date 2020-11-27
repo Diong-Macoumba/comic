@@ -1,0 +1,29 @@
+.container {
+  margin: auto;
+}
+button {
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.column {
+  display: flex;
+  align-content: space-between;
+}
+a {
+  padding: 10px 22px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+a:hover{
+  border: 0.1px solid #d1dce8;
+  background: #d1dce8;
+}
+.active{
+  background: blue;
+  color: white;
+}
+.btn {
+  margin-left: 10px;
+}

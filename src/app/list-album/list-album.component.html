@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="">
+    <div class="col-md-6" style="flex: none; max-width: none;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Albums</h3>
+          <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <button class="btn btn-primary" (click)="listAlbums()">ListAlbums</button>
+          <button class="btn btn-primary" routerLink="/albums">Creer Album</button>
+        </div>
+        <div class="panel-body column">
+          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" [(ngModel)]="mc" data-filters="#dev-table" placeholder="filtrer un album" />
+          <button class="btn btn-primary" (click)="chercherAlbums()">Chercher</button>
+        </div>
+        <table class="table table-hover" id="dev-table" *ngIf="albums">
+          <thead>
+          <tr>
+            <td>Identifiant</td><td>Titre</td><td>Numero</td><td>Date de publication</td><td>CoverName</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let a of albums.content">
+            <td>{{a.idAlbum}}</td>
+            <td>{{a.title}}</td>
+            <td>{{a.number}}</td>
+            <td>{{a.publicationDate}}</td>
+            <td>{{a.coverName}}</td>
+            <td><a class="badge badge-warning" (click)="editAlbum(a.idAlbum)" >Editer</a></td>
+            <td><a class="badge badge-danger" (click)="supprimerAlbum(a)">Supprimer</a></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="container">
+          <ul class="nav nav-pills">
+            <li *ngFor="let p of pagesTotal; let i=index">
+              <a [ngClass]="{'active':i==page}" (click)="nextPage(i)">{{i}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
